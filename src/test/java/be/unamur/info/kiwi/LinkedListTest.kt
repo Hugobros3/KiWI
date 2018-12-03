@@ -17,5 +17,7 @@ class LinkedListTest {
 
         val myFancyModifiedList = myFancyList.replace(1, t2p)
         println(myFancyModifiedList.prettyToString())
+
+        check(myFancyModifiedList[1] == t2p)
     }
 }
