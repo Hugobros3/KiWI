@@ -2,6 +2,7 @@ package be.unamur.info.kiwi.whileplusplus
 
 import be.unamur.info.kiwi.Expression
 import be.unamur.info.kiwi.Value
+import be.unamur.info.kiwi.WhilePlusPlusDSLContext
 
 fun createArray(size: Int) : Expression {
     var cell: Expression = Expression.Quote(Value.Nil)
