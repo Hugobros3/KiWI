@@ -27,9 +27,10 @@ class WhileProgramParsingContext {
         instructions.size == 1 -> instructions[0]
         else -> instructions.reduceRight { left, right -> Instruction.Sequence(left, right) }
     }
+
+    fun addInstructions(vararg instructions: Instruction) {
+        this.instructions.addAll(instructions)
+    }
 }
 
-fun (WhileProgramParsingContext.() -> Unit).buildProgram() =
-    WhileProgramParsingContext().apply(this).buildInstruction()
-
-fun createProgram(programCode: (WhileProgramParsingContext.() -> Unit)) = programCode.buildProgram()
+fun createProgram(programCode: (WhileProgramParsingContext.() -> Unit)) = WhileProgramParsingContext().apply(programCode).buildInstruction()

@@ -17,7 +17,7 @@ class Kiwi(val program: Instruction) {
         storeInitial = storeInitial.replace(0, input)
 
         val storeFinal = program.execute(storeInitial)
-        return storeFinal[1]
+        return storeFinal
     }
 
     private fun createEnvironment(program: Instruction): Value {

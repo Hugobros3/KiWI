@@ -17,19 +17,31 @@ class DSLTest {
 
         val handwrittenTranslation =
             Instruction.Sequence(
-                Instruction.AssignEqual(1, Expression.Quote(Value.Nil)),
+                Instruction.AssignEqual(
+                    1,
+                    Expression.Quote(Value.Nil)
+                ),
                 Instruction.While(
                     Expression.Var(0), Instruction.Sequence(
                         Instruction.AssignEqual(
                             1,
-                            Expression.Constructor(Expression.Head(Expression.Var(0)), Expression.Var(1))
+                            Expression.Constructor(
+                                Expression.Head(
+                                    Expression.Var(
+                                        0
+                                    )
+                                ), Expression.Var(1)
+                            )
                         ),
-                        Instruction.AssignEqual(0, Expression.Tail(Expression.Var(0)))
+                        Instruction.AssignEqual(
+                            0,
+                            Expression.Tail(Expression.Var(0))
+                        )
                     )
                 )
             )
 
-        val dslTranslated = dslVersion.buildProgram()
+        val dslTranslated = WhileProgramParsingContext().apply(dslVersion).buildInstruction()
 
         println(dslTranslated)
         println(handwrittenTranslation)
